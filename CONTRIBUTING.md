@@ -12,7 +12,7 @@ traduzioni, segnalazioni di bug ben descritte.
 
 ## Segnalare un bug o proporre un'idea
 
-Apri una [issue](https://github.com/FurioKain/FireReader/issues/new/choose) e scegli il modulo adatto.
+Apri una [issue](https://github.com/HokutoNoCode/FireReader/issues/new/choose) e scegli il modulo adatto.
 Per i bug indica sempre: modello del tablet, ROM e versione, versione di FireReader
 (`adb shell dumpsys package it.firereader.home | grep versionName`), passi per riprodurre e, se puoi,
 uno screenshot (`adb exec-out screencap -p > schermata.png`) e il log (`adb logcat -d | grep -i firereader`).
@@ -32,7 +32,7 @@ Ti servono:
 Non servono Android Studio né Gradle.
 
 ```bash
-git clone https://github.com/FurioKain/FireReader.git
+git clone https://github.com/HokutoNoCode/FireReader.git
 cd FireReader/app
 ./build.sh            # la prima volta scarica i build-tools in app/.sdk/
 ```

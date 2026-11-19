@@ -8,15 +8,15 @@
 Sblocco interamente da **Windows**, LineageOS al posto di Fire OS e una home pensata solo per leggere.
 
 [![Licenza MIT](https://img.shields.io/badge/licenza-MIT-1a1a1a?style=flat-square)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/FurioKain/FireReader?style=flat-square&color=c45a1c&label=release)](https://github.com/FurioKain/FireReader/releases/latest)
+[![Release](https://img.shields.io/github/v/release/HokutoNoCode/FireReader?style=flat-square&color=c45a1c&label=release)](https://github.com/HokutoNoCode/FireReader/releases/latest)
 [![Android 5.0+](https://img.shields.io/badge/Android-5.0%2B-3ddc84?style=flat-square&logo=android&logoColor=white)](app)
 [![Fire HD 8 2017](https://img.shields.io/badge/dispositivo-Fire%20HD%208%202017%20(douglas)-ff9900?style=flat-square)](docs/GUIDA.md)
-[![Dimensione](https://img.shields.io/badge/APK-~40%20KB-6e6e6e?style=flat-square)](https://github.com/FurioKain/FireReader/releases/latest)
+[![Dimensione](https://img.shields.io/badge/APK-~40%20KB-6e6e6e?style=flat-square)](https://github.com/HokutoNoCode/FireReader/releases/latest)
 [![PR benvenute](https://img.shields.io/badge/PR-benvenute-2b7a2b?style=flat-square)](CONTRIBUTING.md)
 
 [**Guida completa**](docs/GUIDA.md) ·
 [**Come funziona il codice**](docs/ARCHITETTURA.md) ·
-[**Scarica l'APK**](https://github.com/FurioKain/FireReader/releases/latest) ·
+[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/releases/latest) ·
 [**Contribuire**](CONTRIBUTING.md) ·
 [English](#english)
 
@@ -198,7 +198,7 @@ e non richiede di installare Linux sul PC.
 - [ ] Traduzione dell'interfaccia in inglese
 - [ ] Icona dell'app dedicata
 
-Hai un'idea? Apri una [issue](https://github.com/FurioKain/FireReader/issues/new/choose).
+Hai un'idea? Apri una [issue](https://github.com/HokutoNoCode/FireReader/issues/new/choose).
 
 ## Contribuire
 
