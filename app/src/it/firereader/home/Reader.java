@@ -75,7 +75,17 @@ public class Reader extends Activity {
         view.setOnTouchListener((v, ev) -> gestures.onTouchEvent(ev));
 
         loadBoxes();
+        stayAwake();
     }
+
+    /** Keep the screen on while reading; let it sleep after 15 minutes without turning a page. */
+    final Runnable sleepAllowed = () -> getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    void stayAwake() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        ui.removeCallbacks(sleepAllowed);
+        ui.postDelayed(sleepAllowed, 15 * 60 * 1000);
+    }
+    @Override protected void onResume() { super.onResume(); stayAwake(); }
 
     int dp(float v) { return (int) (v * getResources().getDisplayMetrics().density + 0.5f); }
 
@@ -182,6 +192,7 @@ public class Reader extends Activity {
     void go(int p) {
         if (p < 0 || p >= count) return;
         page = p;
+        stayAwake();
         prefs.edit().putInt("page:" + path, page).putLong("t:" + path, System.currentTimeMillis()).apply();
         render();
         if (overlay.getVisibility() == View.VISIBLE) updateOverlay();
