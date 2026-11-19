@@ -1,6 +1,7 @@
 # FireReader (app)
 
-Home screen per tablet Android usati come e-reader. Java puro, senza AndroidX né Gradle.
+Home screen e lettore PDF per tablet Android usati come e-reader. Java puro, senza AndroidX né Gradle.
+Come funziona ogni file: [docs/ARCHITETTURA.md](../docs/ARCHITETTURA.md).
 
 ```bash
 ./build.sh                 # scarica build-tools/platform da dl.google.com e crea build/FireReader.apk

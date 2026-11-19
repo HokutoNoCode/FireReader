@@ -1,0 +1,46 @@
+name: 🐞 Segnala un problema
+description: Qualcosa non funziona nell'app o nella guida
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie! Prima di inviare, togli dai log il **seriale** del tablet e il **codice di sblocco**,
+        e non allegare libri o copertine protette.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Dove
+      options: [App FireReader, Lettore PDF, Sblocco / guida, Driver Windows, Macchina virtuale, Altro]
+    validations: { required: true }
+  - type: input
+    id: device
+    attributes:
+      label: Dispositivo e sistema
+      placeholder: "Fire HD 8 2017, LineageOS 15.1 (20211031)"
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: Versione di FireReader
+      placeholder: "3.1"
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passi per riprodurre
+      placeholder: |
+        1. Apri ...
+        2. Tocca ...
+        3. Vedi ...
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: Cosa ti aspettavi e cosa succede invece
+    validations: { required: true }
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log o screenshot
+      description: "adb logcat -d | grep -i firereader"
+      render: text

@@ -1,4 +1,11 @@
-# Guida completa: da Fire HD 8 (2017) a lettore FireReader, partendo da Windows
+# Guida completa: da Fire HD 8 (2017) a FireReader, partendo da Windows
+
+**Indice:** [0. Cosa serve](#0-cosa-serve) · [1. Driver fastboot](#1-driver-fastboot-per-windows) ·
+[2. Brick intenzionale](#2-brick-intenzionale-del-preloader-da-windows) · [3. Bootrom nella VM](#3-passaggio-bootrom-nella-vm-linux) ·
+[4. TWRP](#4-twrp) · [5. LineageOS](#5-lineageos-151-android-81) · [6. FireReader](#6-firereader) ·
+[Problemi](#se-qualcosa-va-storto)
+
+Tempo indicativo: **1–2 ore** la prima volta, di cui buona parte in download.
 
 > ⚠️ **Leggi tutto prima di iniziare.** Sbloccare il bootloader cancella tutti i dati del tablet
 > e, se qualcosa va storto, può lasciarlo non avviabile (di solito recuperabile, ma con fatica).
@@ -13,9 +20,12 @@
 - Windows SDK (per `makecat.exe` e `signtool.exe`, servono al driver fastboot)
 - [VirtualBox 7](https://www.virtualbox.org/) (per il solo passaggio che su Windows non funziona)
 - Python 3 su Windows con `pip install pycdlib` (per creare la configurazione della VM)
-- I file di **amonet-douglas v1.2** e **brick-douglas** dal thread di k4y0z su XDA
-  (vedi [Crediti](../README.md#crediti)): **non** sono inclusi in questo repository.
-- LineageOS 15.1 per douglas (link nel thread XDA di Rortiz2)
+- I file di **amonet-douglas v1.2** e **brick-douglas** dal
+  [thread di k4y0z su XDA](https://xdaforums.com/t/unlock-root-twrp-unbrick-fire-hd-8-2017-douglas.3962846/)
+  (un riepilogo è anche in [ryanfortner/FireHD8-2017](https://github.com/ryanfortner/FireHD8-2017)).
+  **Non** sono inclusi in questo repository.
+- LineageOS 15.1 per douglas, dal
+  [thread di Rortiz2 su XDA](https://xdaforums.com/t/rom-unlocked-douglas-giza-otas-lineage-15-1-02-jan-2022.4328503/)
 
 Attiva sul tablet: *Impostazioni → Opzioni dispositivo → Info → tocca 7 volte il numero di serie*,
 poi *Opzioni sviluppatore → Debug ADB*. Verifica con `adb devices`.
@@ -36,7 +46,7 @@ In modalità fastboot il Fire si presenta come `USB\VID_1949&PID_0260` e Windows
 > Il certificato serve solo a firmare il driver. **Rimuovilo a lavoro finito** con
 > `windows\driver\uninstall-driver.ps1`.
 
-## 2. "Brick" intenzionale del preloader (da Windows)
+## 2. Brick intenzionale del preloader (da Windows)
 
 Il firmware recente non è vulnerabile a mtk-su, quindi si usa il metodo *brick*: si danneggia
 apposta l'header del preloader così il chip entra nella modalità di emergenza (bootrom).
@@ -124,6 +134,7 @@ Il primo avvio richiede qualche minuto. Completa la configurazione iniziale e ri
 ```bash
 cd app && ./build.sh            # oppure scarica l'APK dalle Release
 adb install build/FireReader.apk
+adb shell pm grant it.firereader.home android.permission.READ_EXTERNAL_STORAGE
 adb shell pm grant it.firereader.home android.permission.WRITE_EXTERNAL_STORAGE
 adb shell pm grant it.firereader.home android.permission.WRITE_SECURE_SETTINGS
 adb shell appops set it.firereader.home WRITE_SETTINGS allow

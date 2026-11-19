@@ -1,0 +1,21 @@
+name: 💡 Proponi un'idea
+description: Una funzione nuova o un miglioramento
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Quale problema risolve?
+      placeholder: "Quando leggo di sera vorrei..."
+    validations: { required: true }
+  - type: textarea
+    id: idea
+    attributes:
+      label: Come lo immagini
+    validations: { required: true }
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contributo
+      options:
+        - label: Mi piacerebbe lavorarci io
