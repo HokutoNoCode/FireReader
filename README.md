@@ -28,8 +28,9 @@ Sblocco dal **PC Windows**, LineageOS 15.1 al posto di Fire OS e una home pensat
 - **Libreria a copertine** (PDF, EPUB, CBZ generate automaticamente), ricerca, ordinamento per recenti, titolo o autore
 - **Comfort**: luminosità, **luce calda** regolabile per la sera, **bianco e nero**, timeout schermo
 - **Ricevi libri via Wi-Fi**: dal PC o dal telefono apri `http://<ip-del-tablet>:8080` e trascini i file
-- I libri si aprono con [ReadEra](https://readera.org) (o qualsiasi lettore installato)
-- Android 5.0+, circa 30 KB
+- **Lettore PDF integrato con ritaglio automatico dei margini**: trova dove sta il testo (pagine pari e dispari separate) e lo porta a tutta larghezza, senza modificare il file; pagina con tocco o tasti volume, segnalibro e percentuale di lettura
+- EPUB e altri formati si aprono con [ReadEra](https://readera.org) (o qualsiasi lettore installato)
+- Android 5.0+, circa 40 KB
 
 ## Perché questo repo
 
@@ -76,7 +77,8 @@ mantengono le loro licenze.
 Windows PC. The repo contains:
 
 - `app/`: a tiny, dependency-free Android home screen for reading (cover library, recently read,
-  search and sort, warm light, grayscale, brightness, Wi-Fi book upload at `http://<tablet-ip>:8080`).
+  search and sort, warm light, grayscale, brightness, Wi-Fi book upload at `http://<tablet-ip>:8080`) with a
+  built-in PDF reader that auto-crops print margins (odd/even pages separately) so text fills the screen width.
   Build it with `app/build.sh`.
 - `windows/driver/`: a WinUSB **fastboot driver** for Fire tablets (`VID_1949&PID_0260`), signed locally
   with a throw-away certificate (use `uninstall-driver.ps1` afterwards).

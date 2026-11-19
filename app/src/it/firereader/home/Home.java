@@ -179,7 +179,10 @@ public class Home extends Activity {
         String[] ta = titleAuthor(f);
         info.addView(text(ta[0], 22, INK, true, true));
         if (ta[1].length() > 0) { TextView a = text(ta[1], 16, GREY, true, false); a.setPadding(0, dp(6), 0, 0); info.addView(a); }
-        String when = started ? "Aperto " + ago(prefs.getLong("t:" + f.getPath(), 0)) : kind(f);
+        int np = prefs.getInt("pages:" + f.getPath(), 0);
+        String when = !started ? kind(f)
+            : np > 1 ? "Pagina " + (prefs.getInt("page:" + f.getPath(), 0) + 1) + " di " + np + " · " + progress(f)
+            : "Aperto " + ago(prefs.getLong("t:" + f.getPath(), 0));
         TextView k = text(when, 13, GREY, false, false); k.setPadding(0, dp(10), 0, dp(18)); info.addView(k);
         TextView btn = text(started ? "Continua" : "Leggi", 16, PAPER, false, true);
         btn.setGravity(Gravity.CENTER);
@@ -435,7 +438,7 @@ public class Home extends Activity {
         TextView t = text(ta[0], 13, INK, true, true); t.setMaxLines(2); t.setEllipsize(TextUtils.TruncateAt.END); t.setPadding(0, dp(6), 0, 0);
         cell.addView(t);
         if (ta[1].length() > 0) { TextView a = text(ta[1], 12, GREY, true, false); a.setMaxLines(1); a.setEllipsize(TextUtils.TruncateAt.END); cell.addView(a); }
-        if (showWhen) cell.addView(text(ago(prefs.getLong("t:" + f.getPath(), 0)), 11, GREY, false, false));
+        if (showWhen) { String pr = progress(f); cell.addView(text(pr.isEmpty() ? ago(prefs.getLong("t:" + f.getPath(), 0)) : "Letto " + pr, 11, GREY, false, false)); }
         cell.setOnClickListener(v -> open(f));
         cell.setOnLongClickListener(v -> { details(f); return true; });
         return cell;
@@ -446,7 +449,9 @@ public class Home extends Activity {
         new AlertDialog.Builder(this).setTitle(ta[0])
             .setMessage((ta[1].isEmpty() ? "" : ta[1] + "\n") + kind(f) + "\n" + f.getParent())
             .setPositiveButton("Leggi", (d, w) -> open(f))
-            .setNeutralButton("Segna come non letto", (d, w) -> { prefs.edit().remove("t:" + f.getPath()).apply(); build(); })
+            .setNeutralButton(ext(f).equals(".pdf") ? "Apri con ReadEra" : "Segna come non letto", (d, w) -> {
+                if (ext(f).equals(".pdf")) open(f, true);
+                else { prefs.edit().remove("t:" + f.getPath()).apply(); build(); } })
             .setNegativeButton("Chiudi", null).show();
     }
 
@@ -530,6 +535,13 @@ public class Home extends Activity {
         return new String[]{n, ""};
     }
 
+    String progress(File f) {
+        int n = prefs.getInt("pages:" + f.getPath(), 0);
+        if (n <= 1) return "";
+        int pg = prefs.getInt("page:" + f.getPath(), 0);
+        return Math.round(100f * pg / (n - 1)) + "%";
+    }
+
     String ago(long t) {
         if (t <= 0) return "";
         long m = (System.currentTimeMillis() - t) / 60000;
@@ -566,9 +578,17 @@ public class Home extends Activity {
         }
     }
 
-    void open(File f) {
+    void open(File f) { open(f, false); }
+
+    void open(File f, boolean external) {
         prefs.edit().putLong("t:" + f.getPath(), System.currentTimeMillis()).apply();
         String e = ext(f);
+        if (e.equals(".pdf") && !external) {
+            Intent r = new Intent(this, Reader.class);
+            r.putExtra("path", f.getPath());
+            startActivity(r);
+            return;
+        }
         String mime = e.equals(".pdf") ? "application/pdf" : e.equals(".epub") ? "application/epub+zip"
             : e.equals(".cbr") ? "application/x-cbr" : e.equals(".cbz") ? "application/x-cbz"
             : e.equals(".mobi") ? "application/x-mobipocket-ebook" : e.equals(".djvu") ? "image/vnd.djvu"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.firereader.home" android:versionCode="2" android:versionName="2.0">
+    package="it.firereader.home" android:versionCode="3" android:versionName="3.0">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="23"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -24,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".Reader" android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
         <service android:name=".Warm" android:exported="false"/>
     </application>
 </manifest>
