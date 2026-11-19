@@ -1,0 +1,14 @@
+Make the amonet bootrom step run unattended (e.g. over SSH with no TTY):
+the "remove the short and press Enter" prompt waits 4 s instead of reading stdin.
+Apply inside the amonet folder:  patch -p1 < amonet-noninteractive.patch
+
+--- a/modules/load_payload.py
++++ b/modules/load_payload.py
+@@
+     def run(self):
+         print("")
+         print(self.msg)
+         print("")
+-        input()
++        time.sleep(4)
+         self.done = True

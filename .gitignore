@@ -1,0 +1,13 @@
+app/.sdk/
+app/build/
+*.keystore
+*.jks
+*.cer
+*.pfx
+*.apk
+windows/driver/*.cat
+vm/*.iso
+vm/*.ova
+vm/*.vmdk
+vm/serial.log
+vm/user-data

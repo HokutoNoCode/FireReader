@@ -1,0 +1,21 @@
+#cloud-config
+# Minimal Ubuntu VM used only to run the amonet bootrom step.
+hostname: firevm
+users:
+  - name: fire
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - __SSH_PUBLIC_KEY__
+package_update: true
+packages:
+  - python3-serial
+  - adb
+  - fastboot
+  - unzip
+runcmd:
+  # cloud images ship without cdc_acm (needed for the MediaTek bootrom serial port)
+  - [ sh, -c, "apt-get install -y linux-modules-extra-$(uname -r) && modprobe cdc_acm" ]
+  - [ sh, -c, "systemctl disable --now ModemManager || true" ]
+  - [ touch, /home/fire/READY ]

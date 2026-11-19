@@ -1,0 +1,40 @@
+; WinUSB driver package for Amazon Fire tablets in fastboot mode.
+; Uses only Microsoft's inbox winusb.sys; exposes the Android USB interface GUID
+; so that platform-tools fastboot.exe can see the device.
+[Version]
+Signature   = "$Windows NT$"
+Class       = USBDevice
+ClassGUID   = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider    = %ProviderName%
+CatalogFile = fire_fastboot.cat
+DriverVer   = 11/18/2026,1.0.0.0
+
+[Manufacturer]
+%ProviderName% = FireDev,NTamd64
+
+[FireDev.NTamd64]
+; Fire HD 8 2017 (douglas) stock fastboot
+%DeviceName% = USB_Install, USB\VID_1949&PID_0260
+; other Lab126 / generic fastboot IDs seen on Fire devices
+%DeviceName% = USB_Install, USB\VID_1949&PID_0006
+%DeviceName% = USB_Install, USB\VID_1949&PID_00F2
+%DeviceName% = USB_Install, USB\VID_18D1&PID_0D02
+%DeviceName% = USB_Install, USB\VID_0E8D&PID_201C
+
+[USB_Install]
+Include = winusb.inf
+Needs   = WINUSB.NT
+
+[USB_Install.Services]
+Include = winusb.inf
+Needs   = WINUSB.NT.Services
+
+[USB_Install.HW]
+AddReg = Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{F72FE0D4-CBCB-407d-8814-9ED673D0DD6B}"
+
+[Strings]
+ProviderName = "FireReader"
+DeviceName   = "Fire Fastboot Interface"
