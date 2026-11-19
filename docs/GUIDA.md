@@ -143,6 +143,14 @@ adb shell settings put global transition_animation_scale 0.5
 adb shell settings put global animator_duration_scale 0.5
 ```
 
+Consigliato su un e-reader: togliere la schermata di blocco (su questa ROM resta nera e sembra
+che il tablet sia spento) e l'ambient display:
+
+```bash
+adb shell locksettings set-disabled true
+adb shell settings put secure doze_enabled 0
+```
+
 I libri vanno nella cartella `Books` della memoria interna (oppure via *Comfort → Ricevi libri via
 Wi-Fi*).
 
