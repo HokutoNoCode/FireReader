@@ -16,7 +16,7 @@ Sblocco interamente da **Windows**, LineageOS al posto di Fire OS e una home pen
 
 [**Guida completa**](docs/GUIDA.md) ·
 [**Come funziona il codice**](docs/ARCHITETTURA.md) ·
-[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/releases/latest) ·
+[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.1.0.apk) ·
 [**Contribuire**](CONTRIBUTING.md) ·
 [English](#english)
 
@@ -100,7 +100,7 @@ Ogni passaggio, con i comandi esatti e cosa deve comparire sullo schermo, è nel
 > Se parti da Fire OS, segui prima la **[guida completa](docs/GUIDA.md)**.
 
 ```bash
-# 1. scarica FireReader.apk dalle Release (oppure compila: cd app && ./build.sh)
+# 1. scarica release/FireReader-3.1.0.apk (oppure compila: cd app && ./build.sh)
 adb install FireReader.apk
 
 # 2. concedi i permessi (luminosità, luce calda, bianco e nero, libri)
