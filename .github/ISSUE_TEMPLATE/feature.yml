@@ -1,21 +1,21 @@
-name: 💡 Proponi un'idea
-description: Una funzione nuova o un miglioramento
+name: 💡 Suggest an idea
+description: A new feature or an improvement
 labels: [enhancement]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Quale problema risolve?
-      placeholder: "Quando leggo di sera vorrei..."
+      label: What problem does it solve?
+      placeholder: "When I read in the evening I'd like..."
     validations: { required: true }
   - type: textarea
     id: idea
     attributes:
-      label: Come lo immagini
+      label: How do you picture it?
     validations: { required: true }
   - type: checkboxes
     id: help
     attributes:
-      label: Contributo
+      label: Contributing
       options:
-        - label: Mi piacerebbe lavorarci io
+        - label: I'd like to work on this myself

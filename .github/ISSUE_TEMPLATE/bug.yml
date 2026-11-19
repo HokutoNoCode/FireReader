@@ -1,46 +1,46 @@
-name: 🐞 Segnala un problema
-description: Qualcosa non funziona nell'app o nella guida
+name: 🐞 Report a bug
+description: Something doesn't work in the app or the guide
 labels: [bug]
 body:
   - type: markdown
     attributes:
       value: |
-        Grazie! Prima di inviare, togli dai log il **seriale** del tablet e il **codice di sblocco**,
-        e non allegare libri o copertine protette.
+        Thanks! Before submitting, remove the tablet's **serial number** and **unlock code** from any logs,
+        and don't attach copyrighted books or covers. English or Italian is fine.
   - type: dropdown
     id: area
     attributes:
-      label: Dove
-      options: [App FireReader, Lettore PDF, Sblocco / guida, Driver Windows, Macchina virtuale, Altro]
+      label: Where
+      options: [FireReader app, PDF reader, Unlock / guide, Windows driver, Virtual machine, Other]
     validations: { required: true }
   - type: input
     id: device
     attributes:
-      label: Dispositivo e sistema
+      label: Device and system
       placeholder: "Fire HD 8 2017, LineageOS 15.1 (20211031)"
     validations: { required: true }
   - type: input
     id: version
     attributes:
-      label: Versione di FireReader
-      placeholder: "3.1"
+      label: FireReader version
+      placeholder: "3.1.0"
   - type: textarea
     id: steps
     attributes:
-      label: Passi per riprodurre
+      label: Steps to reproduce
       placeholder: |
-        1. Apri ...
-        2. Tocca ...
-        3. Vedi ...
+        1. Open ...
+        2. Tap ...
+        3. See ...
     validations: { required: true }
   - type: textarea
     id: expected
     attributes:
-      label: Cosa ti aspettavi e cosa succede invece
+      label: What you expected and what happens instead
     validations: { required: true }
   - type: textarea
     id: logs
     attributes:
-      label: Log o screenshot
+      label: Logs or screenshots
       description: "adb logcat -d | grep -i firereader"
       render: text

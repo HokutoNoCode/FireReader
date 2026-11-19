@@ -1,32 +1,35 @@
 # Changelog
 
-Tutte le modifiche rilevanti a FireReader. Formato ispirato a [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
+All notable changes to FireReader. Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Non rilasciato]
+## [Unreleased]
+### Documentation
+- English is now the main language of the repository (README, guide, architecture, contributing).
+  Italian versions remain available: `README.it.md`, `docs/GUIDA.md`, `docs/ARCHITETTURA.md`.
 
 ## [3.1.0] - 2026-11-19
-### Aggiunto
-- Lo schermo resta acceso mentre leggi e si spegne da solo dopo 15 minuti senza girare pagina.
-### Documentazione
-- Guida: come togliere la schermata di blocco (nera su questa ROM) e l'ambient display.
+### Added
+- The screen stays on while you read and turns itself off after 15 minutes without a page turn.
+### Documentation
+- Guide: how to remove the lock screen (black on this ROM) and ambient display.
 
 ## [3.0.0] - 2026-11-19
-### Aggiunto
-- **Lettore PDF integrato con ritaglio automatico dei margini**: riquadro del testo calcolato per pagine pari e
-  dispari e unito al contenuto di ogni pagina, testo a tutta larghezza, il file non viene modificato.
-- Pagina con tocco, scorrimento o tasti del volume; menu con barra per saltare alle pagine e scelta
-  *margini ritagliati / originali* per ogni libro.
-- Avanzamento reale in home: *"Pagina 34 di 190 · 18%"*.
-- Tenendo premuto su un PDF: *Apri con ReadEra*.
+### Added
+- **Built-in PDF reader with automatic margin cropping**: text box computed separately for even and odd pages
+  and merged with each page's content, text at full width, the file is never modified.
+- Page turns by tap, swipe or volume keys; menu with a slider to jump to any page and a per-book
+  *cropped / original margins* option.
+- Real progress on the home screen: *"Page 34 of 190 · 18%"*.
+- Long-press a PDF: *Open with ReadEra*.
 
 ## [2.0.0] - 2026-11-18
-### Aggiunto
-- Ricerca per titolo e autore, ordinamento della libreria (recenti, titolo, autore).
-- Riga *Letti di recente*.
-- Scheda **Comfort**: luminosità, luce calda regolabile, bianco e nero, spegnimento schermo.
-- **Ricevi libri via Wi-Fi** dal browser del PC o del telefono.
+### Added
+- Search by title and author, library sorting (recent, title, author).
+- *Recently read* row.
+- **Comfort** tab: brightness, adjustable warm light, grayscale, screen timeout.
+- **Receive books over Wi-Fi** from a PC or phone browser.
 
 ## [1.0.0] - 2026-11-18
-### Aggiunto
-- Prima versione: home a copertine con *Continua a leggere* e libreria in griglia.
-- Driver fastboot per Windows, VM per il passaggio bootrom, guida completa.
+### Added
+- First version: cover-based home with *Continue reading* and a library grid.
+- Fastboot driver for Windows, VM for the bootrom step, full guide.

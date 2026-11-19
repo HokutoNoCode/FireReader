@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
-  - name: 📖 Guida completa
-    url: https://github.com/HokutoNoCode/FireReader/blob/main/docs/GUIDA.md
-    about: Molti problemi dello sblocco sono già descritti nella sezione "Se qualcosa va storto".
+  - name: 📖 Step-by-step guide
+    url: https://github.com/HokutoNoCode/FireReader/blob/main/docs/GUIDE.md
+    about: Many unlock problems are already covered in the "If something goes wrong" section.

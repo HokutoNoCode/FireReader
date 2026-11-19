@@ -1,258 +1,246 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="FireReader: il tuo vecchio Fire HD 8 diventa un e-reader" width="100%">
+<img src="assets/banner.png" alt="FireReader: turn your old Fire HD 8 into a dedicated e-reader" width="100%">
 
 # FireReader
 
-**Il tuo vecchio Amazon Fire HD 8 (2017) diventa un e-reader dedicato.**
-Sblocco interamente da **Windows**, LineageOS al posto di Fire OS e una home pensata solo per leggere.
+**Your old Amazon Fire HD 8 (2017) is not dead. It's an e-reader waiting to happen.**
 
-[![Licenza MIT](https://img.shields.io/badge/licenza-MIT-1a1a1a?style=flat-square)](LICENSE)
+Unlock it entirely from **Windows**, replace Fire OS with LineageOS,
+and get a home screen built for one thing only: reading.
+
+[![MIT License](https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/HokutoNoCode/FireReader?style=flat-square&color=c45a1c&label=release)](https://github.com/HokutoNoCode/FireReader/releases/latest)
 [![Android 5.0+](https://img.shields.io/badge/Android-5.0%2B-3ddc84?style=flat-square&logo=android&logoColor=white)](app)
-[![Fire HD 8 2017](https://img.shields.io/badge/dispositivo-Fire%20HD%208%202017%20(douglas)-ff9900?style=flat-square)](docs/GUIDA.md)
-[![Dimensione](https://img.shields.io/badge/APK-~40%20KB-6e6e6e?style=flat-square)](https://github.com/HokutoNoCode/FireReader/releases/latest)
-[![PR benvenute](https://img.shields.io/badge/PR-benvenute-2b7a2b?style=flat-square)](CONTRIBUTING.md)
+[![Fire HD 8 2017](https://img.shields.io/badge/device-Fire%20HD%208%202017%20(douglas)-ff9900?style=flat-square)](docs/GUIDE.md)
+[![APK size](https://img.shields.io/badge/APK-~40%20KB-6e6e6e?style=flat-square)](https://github.com/HokutoNoCode/FireReader/releases/latest)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-2b7a2b?style=flat-square)](CONTRIBUTING.md)
 
-[**Guida completa**](docs/GUIDA.md) ·
-[**Come funziona il codice**](docs/ARCHITETTURA.md) ·
-[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.1.0.apk) ·
-[**Contribuire**](CONTRIBUTING.md) ·
-[English](#english)
+[**Step-by-step guide**](docs/GUIDE.md) ·
+[**How the code works**](docs/ARCHITECTURE.md) ·
+[**Download the APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.1.0.apk) ·
+[**Contributing**](CONTRIBUTING.md) ·
+[🇮🇹 Italiano](README.it.md)
 
 </div>
 
 ---
 
-## Indice
+## Contents
 
-- [Perché FireReader](#perché-firereader)
-- [Funzioni](#funzioni)
-- [Screenshot](#screenshot)
-- [Come si arriva al risultato](#come-si-arriva-al-risultato)
-- [Avvio rapido](#avvio-rapido)
-- [Cosa c'è nel repository](#cosa-cè-nel-repository)
-- [Domande frequenti](#domande-frequenti)
+- [Why FireReader](#why-firereader)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [How you get there](#how-you-get-there)
+- [Quick start](#quick-start)
+- [What's in the repository](#whats-in-the-repository)
+- [FAQ](#faq)
 - [Roadmap](#roadmap)
-- [Contribuire](#contribuire)
-- [Avvertenze](#avvertenze)
-- [Crediti](#crediti)
-- [Licenza](#licenza)
+- [Contributing](#contributing)
+- [Warnings](#warnings)
+- [Credits](#credits)
+- [License](#license)
 
-## Perché FireReader
+## Why FireReader
 
-Milioni di Fire HD 8 stanno chiusi in un cassetto: Fire OS è lento, pieno di pubblicità e non riceve più
-aggiornamenti utili. Come **lettore di libri** però quel tablet è ancora ottimo: schermo da 8", batteria
-che dura, tasti del volume per girare pagina.
+Millions of Fire HD 8 tablets are sitting in drawers. Fire OS is slow, full of ads and no longer gets meaningful
+updates. As a **book reader**, though, the hardware is still great: an 8" screen, a battery that lasts for days
+of reading, and volume keys that make perfect page-turn buttons.
 
-Il problema è che le guide per sbloccarlo sono pensate per **Linux** e, da Windows, ci si blocca in tre punti.
-FireReader raccoglie la procedura completa **testata da Windows** e aggiunge un'app che trasforma il
-tablet in qualcosa che somiglia a un Kobo o a un Kindle, ma è tuo e aperto.
+The catch: every unlock guide out there assumes **Linux**, and on Windows you get stuck at three specific points.
+FireReader is the full procedure **tested end to end from Windows**, plus an app that turns the tablet into
+something that feels like a Kobo or a Kindle, except it's yours and it's open.
 
-## Funzioni
+## Features
 
 | | |
 |---|---|
-| 📚 **Libreria a copertine** | Copertine vere estratte da PDF, EPUB e CBZ. Ricerca per titolo o autore, ordinamento per recenti, titolo o autore |
-| 📖 **Continua a leggere** | Il libro in corso in primo piano, con **pagina e percentuale reali**, più la riga dei letti di recente |
-| ✂️ **PDF senza margini** | Lettore PDF integrato che **ritaglia da solo i margini di stampa** (pagine pari e dispari separate) e porta il testo a tutta larghezza. Il file non viene mai modificato |
-| 🔊 **Girare pagina** | Tocco a destra o a sinistra, scorrimento, oppure **tasti del volume** |
-| 🌙 **Comfort di lettura** | Luminosità, **luce calda** regolabile per la sera, **bianco e nero** stile carta, spegnimento schermo |
-| 📶 **Libri via Wi-Fi** | Dal PC o dal telefono apri `http://<ip-del-tablet>:8080` e trascini i file: niente cavo, niente app |
-| 💡 **Schermo intelligente** | Resta acceso mentre leggi, si spegne da solo dopo 15 minuti senza girare pagina |
-| 🪶 **Leggerissima** | Circa 40 KB, Java puro, nessuna libreria esterna, nessuna pubblicità né connessione a server esterni |
+| 📚 **Cover library** | Real covers extracted from PDF, EPUB and CBZ. Search by title or author, sort by recent, title or author |
+| 📖 **Continue reading** | Your current book up front, with **real page and percentage**, plus a *recently read* row |
+| ✂️ **Margin-free PDFs** | Built-in PDF reader that **automatically crops print margins** (odd and even pages handled separately) so text fills the full screen width. Your file is never modified |
+| 🔊 **Page turns** | Tap left or right, swipe, or use the **volume keys** |
+| 🌙 **Reading comfort** | Brightness, adjustable **warm light** for the evening, paper-like **grayscale**, screen timeout |
+| 📶 **Books over Wi-Fi** | Open `http://<tablet-ip>:8080` on your PC or phone and drag files in. No cable, no app |
+| 💡 **Smart screen** | Stays on while you read, turns itself off after 15 minutes without a page turn |
+| 🪶 **Featherweight** | About 40 KB, plain Java, zero external libraries, no ads, no tracking, no calls to outside servers |
 
-## Screenshot
+> [!NOTE]
+> The app's interface is currently in **Italian**. An English translation is the top item on the
+> [roadmap](#roadmap), and a great [first contribution](CONTRIBUTING.md#where-to-start).
+
+## Screenshots
 
 <div align="center">
-<img src="screenshots/home.png" width="31%" alt="Home: continua a leggere">&nbsp;
-<img src="screenshots/libreria.png" width="31%" alt="Libreria a copertine">&nbsp;
-<img src="screenshots/comfort.png" width="31%" alt="Comfort di lettura">
-<br><sub><b>Home</b> · <b>I miei libri</b> · <b>Comfort</b> (libreria di prova con classici di pubblico dominio)</sub>
+<img src="screenshots/home.png" width="31%" alt="Home: continue reading">&nbsp;
+<img src="screenshots/libreria.png" width="31%" alt="Cover library">&nbsp;
+<img src="screenshots/comfort.png" width="31%" alt="Reading comfort settings">
+<br><sub><b>Home</b> · <b>My books</b> · <b>Comfort</b> (demo library of public-domain classics)</sub>
 <br><br>
-<img src="assets/ritaglio-margini.png" width="80%" alt="Ritaglio automatico dei margini nei PDF">
-<br><sub>Il lettore PDF integrato toglie i margini pensati per la stampa e usa tutto lo schermo.</sub>
+<img src="assets/margin-crop.png" width="80%" alt="Automatic margin cropping in PDFs">
+<br><sub>The built-in PDF reader strips the margins meant for paper and uses the whole screen.</sub>
 </div>
 
-## Come si arriva al risultato
+## How you get there
 
 ```mermaid
 flowchart LR
-    A["Fire HD 8 2017<br/>Fire OS"] -->|"1 · driver fastboot<br/>per Windows"| B["fastboot"]
-    B -->|"2 · fastboot -S 512M<br/>flash brick"| C["Modalità<br/>emergenza (BROM)"]
-    C -->|"3 · amonet nella<br/>VM Linux"| D["Bootloader<br/>sbloccato + TWRP"]
-    D -->|"4 · LineageOS 15.1"| E["Android 8.1<br/>pulito"]
+    A["Fire HD 8 2017<br/>Fire OS"] -->|"1 · fastboot driver<br/>for Windows"| B["fastboot"]
+    B -->|"2 · fastboot -S 512M<br/>flash brick"| C["Emergency mode<br/>(BROM)"]
+    C -->|"3 · amonet in a<br/>Linux VM"| D["Unlocked bootloader<br/>+ TWRP"]
+    D -->|"4 · LineageOS 15.1"| E["Clean<br/>Android 8.1"]
     E -->|"5 · FireReader"| F["📖 E-reader"]
 ```
 
-| Passo | Problema da Windows | Soluzione in questo repo |
+| Step | What breaks on Windows | The fix in this repo |
 |:---:|---|---|
-| 1 | In fastboot il Fire (`USB\VID_1949&PID_0260`) non ha driver: `fastboot` resta su *waiting for any device* | Pacchetto WinUSB firmato in locale → [`windows/driver`](windows/driver) |
-| 2 | Il fastboot moderno spezza l'immagine dell'exploit in blocchi "sparse" e l'exploit non parte | `fastboot -S 512M flash brick …` |
-| 3 | Lo script `amonet` arriva a *"all good"* ma poi fallisce con `read fail`: la seriale di Windows non dialoga col payload | Piccola VM Ubuntu che si aggancia il tablet via USB da sola → [`vm`](vm) |
+| 1 | In fastboot mode the Fire (`USB\VID_1949&PID_0260`) has no driver, so `fastboot` hangs on *waiting for any device* | A locally signed WinUSB driver package → [`windows/driver`](windows/driver) |
+| 2 | Modern fastboot splits the exploit image into "sparse" chunks and the exploit never fires | `fastboot -S 512M flash brick …` |
+| 3 | The `amonet` script reaches *"all good"* and then dies with `read fail`: the Windows serial stack can't talk to the payload | A tiny Ubuntu VM that grabs the tablet over USB by itself → [`vm`](vm) |
 
-Ogni passaggio, con i comandi esatti e cosa deve comparire sullo schermo, è nella
-**[guida completa](docs/GUIDA.md)**.
+Every step, with the exact commands and what you should see on the screen, is in the
+**[step-by-step guide](docs/GUIDE.md)**.
 
-## Avvio rapido
+## Quick start
 
-> Hai già un Fire HD 8 2017 con LineageOS? Allora ti bastano questi comandi.
-> Se parti da Fire OS, segui prima la **[guida completa](docs/GUIDA.md)**.
+> Already running LineageOS on a Fire HD 8 2017 (or any Android 5.0+ tablet)? These commands are all you need.
+> Starting from Fire OS? Follow the **[step-by-step guide](docs/GUIDE.md)** first.
 
 ```bash
-# 1. scarica release/FireReader-3.1.0.apk (oppure compila: cd app && ./build.sh)
-adb install FireReader.apk
+# 1. download release/FireReader-3.1.0.apk (or build it: cd app && ./build.sh)
+adb install FireReader-3.1.0.apk
 
-# 2. concedi i permessi (luminosità, luce calda, bianco e nero, libri)
+# 2. grant permissions (brightness, warm light, grayscale, books)
 adb shell pm grant it.firereader.home android.permission.READ_EXTERNAL_STORAGE
 adb shell pm grant it.firereader.home android.permission.WRITE_EXTERNAL_STORAGE
 adb shell pm grant it.firereader.home android.permission.WRITE_SECURE_SETTINGS
 adb shell appops set it.firereader.home WRITE_SETTINGS allow
 adb shell appops set it.firereader.home SYSTEM_ALERT_WINDOW allow
 
-# 3. rendila la home del tablet
+# 3. make it the tablet's home screen
 adb shell cmd package set-home-activity it.firereader.home/.Home
 ```
 
-Metti i libri nella cartella **`Books`** della memoria interna, oppure usa **Comfort → Ricevi libri via Wi-Fi**.
-Per EPUB e altri formati installa anche [ReadEra](https://readera.org) (gratuito).
+Put your books in the **`Books`** folder of internal storage, or use **Comfort → Receive books over Wi-Fi**.
+For EPUB and other formats, also install [ReadEra](https://readera.org) (free).
 
-## Cosa c'è nel repository
+## What's in the repository
 
 ```text
 FireReader/
-├── app/                         L'app FireReader (Java puro, senza Gradle)
-│   ├── AndroidManifest.xml      Permessi, home launcher, lettore e servizio luce calda
-│   ├── build.sh                 Compila e firma l'APK con i soli build-tools Android
+├── app/                         The FireReader app (plain Java, no Gradle)
+│   ├── AndroidManifest.xml      Permissions, home launcher, reader and warm-light service
+│   ├── build.sh                 Builds and signs the APK using only the Android build-tools
 │   └── src/it/firereader/home/
-│       ├── Home.java            Home, libreria, ricerca, Comfort, server Wi-Fi
-│       ├── Reader.java          Lettore PDF con ritaglio automatico dei margini
-│       └── Warm.java            Filtro "luce calda" sopra lo schermo
+│       ├── Home.java            Home screen, library, search, Comfort, Wi-Fi server
+│       ├── Reader.java          PDF reader with automatic margin cropping
+│       └── Warm.java            Warm-light overlay on top of the screen
 ├── windows/
-│   ├── driver/                  Driver fastboot WinUSB per i Fire + script di (dis)installazione
-│   └── adb-bridge.bat           Ponte opzionale per eseguire comandi su Windows da uno script
-├── vm/                          VM Ubuntu per VirtualBox che aggancia il tablet via USB
-├── patches/                     Patch per eseguire amonet senza tastiera
+│   ├── driver/                  WinUSB fastboot driver for Fire tablets + (un)install scripts
+│   └── adb-bridge.bat           Optional bridge to run Windows commands from a script
+├── vm/                          Ubuntu VM for VirtualBox that grabs the tablet over USB
+├── patches/                     Patch to run amonet without a keyboard
 ├── docs/
-│   ├── GUIDA.md                 Procedura completa passo passo
-│   └── ARCHITETTURA.md          Come funziona ogni file, riga per riga dove serve
-├── assets/ · screenshots/       Immagini del README
-├── CONTRIBUTING.md              Come contribuire
-└── CHANGELOG.md                 Storico delle versioni
+│   ├── GUIDE.md                 The full step-by-step procedure (🇮🇹 GUIDA.md)
+│   └── ARCHITECTURE.md          How every file works, line by line where it matters (🇮🇹 ARCHITETTURA.md)
+├── release/                     Prebuilt, signed APK + SHA-256 checksum
+├── assets/ · screenshots/       README artwork
+├── CONTRIBUTING.md              How to contribute
+└── CHANGELOG.md                 Version history
 ```
 
-Ogni file è spiegato in dettaglio in **[docs/ARCHITETTURA.md](docs/ARCHITETTURA.md)**.
+Every file is explained in detail in **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**.
 
-## Domande frequenti
+## FAQ
 
 <details>
-<summary><b>Funziona su altri Fire (HD 10, Fire 7, HD 8 2018/2020…)?</b></summary>
+<summary><b>Does it work on other Fire tablets (HD 10, Fire 7, HD 8 2018/2020…)?</b></summary>
 
-Lo **sblocco** descritto qui vale solo per il **Fire HD 8 2017 "douglas" (KFDOWI)**. Non provarlo su altri
-modelli. L'**app FireReader** invece gira su qualsiasi Android 5.0+: puoi usarla su un altro tablet già sbloccato
-o anche su un tablet Android qualunque.
+The **unlock** described here is for the **Fire HD 8 2017 "douglas" (KFDOWI)** only. Do not try it on other
+models. The **FireReader app**, on the other hand, runs on any Android 5.0+ device: use it on another unlocked
+tablet or on any ordinary Android tablet.
 </details>
 
 <details>
-<summary><b>Posso usare l'app Kindle o i libri comprati su Amazon/Kobo?</b></summary>
+<summary><b>Can I use the Kindle app or books bought on Amazon/Kobo?</b></summary>
 
-Per questo modello la ROM più recente è LineageOS 15.1 (Android 8.1). Le versioni attuali delle app Kindle e
-Kobo chiedono Android più recenti. FireReader legge i tuoi file **senza DRM** (EPUB, PDF, CBZ, MOBI…).
+The newest ROM for this model is LineageOS 15.1 (Android 8.1), and current Kindle and Kobo apps require newer
+Android versions. FireReader reads your own **DRM-free** files (EPUB, PDF, CBZ, MOBI…).
 </details>
 
 <details>
-<summary><b>Perché non Android 9 o successivo?</b></summary>
+<summary><b>Why not Android 9 or later?</b></summary>
 
-Le ROM con Android 9 e 10 esistono per il Fire HD 8 **2018** ("karnak"), non per il 2017. Lo sviluppo per
-"douglas" è fermo a LineageOS 15.1.
+Android 9 and 10 ROMs exist for the Fire HD 8 **2018** ("karnak"), not the 2017 model. Development for
+"douglas" stops at LineageOS 15.1.
 </details>
 
 <details>
-<summary><b>Lo schermo è diventato tutto nero, l'ho rotto?</b></summary>
+<summary><b>The screen went completely black. Did I break it?</b></summary>
 
-Quasi certamente no. Dopo il "brick" intenzionale lo schermo **deve** restare nero (vedi la guida). Su LineageOS,
-invece, la schermata di blocco di questa ROM è nera e sembra un tablet spento: la guida spiega come toglierla.
+Almost certainly not. After the intentional "brick" the screen is **supposed** to stay black (see the guide).
+On LineageOS, this ROM's lock screen is black and looks exactly like a powered-off tablet: the guide shows how
+to turn it off.
 </details>
 
 <details>
-<summary><b>Il ritaglio dei margini taglia qualcosa?</b></summary>
+<summary><b>Can margin cropping cut off part of a page?</b></summary>
 
-No: il lettore unisce sempre il riquadro tipico del libro con il contenuto reale di **ogni** pagina, quindi
-titoli, note o immagini più larghe restano visibili. Se un libro rende meglio intero, tocca al centro e scegli
-**Margini: originali** (l'impostazione è salvata per quel libro).
+No. The reader always merges the book's typical text box with the actual content of **each** page, so
+headings, footnotes and wider images stay visible. If a book looks better uncropped, tap the center and choose
+**Margins: original** (the setting is saved per book).
 </details>
 
 <details>
-<summary><b>Mi serve per forza Linux o una VM?</b></summary>
+<summary><b>Do I really need Linux or a VM?</b></summary>
 
-Solo per un passaggio (il passo 3, *bootrom*). Tutto il resto si fa da Windows. La VM viene creata da uno script
-e non richiede di installare Linux sul PC.
+Only for one step (step 3, *bootrom*). Everything else happens on Windows. The VM is created by a script, and
+you don't have to install Linux on your PC. Already on Linux? Skip the VM and run that step natively.
 </details>
 
 ## Roadmap
 
-- [ ] Lettore EPUB integrato (impaginazione, caratteri, interlinea) per non dipendere da app esterne
-- [ ] Collezioni / scaffali personalizzati
-- [ ] Sincronizzazione con [Calibre](https://calibre-ebook.com) (protocollo wireless)
-- [ ] Dizionario offline e sottolineature
-- [ ] Traduzione dell'interfaccia in inglese
-- [ ] Icona dell'app dedicata
+- [ ] English interface (with Italian kept as a second language)
+- [ ] Built-in EPUB reader (pagination, fonts, line spacing) so no external app is needed
+- [ ] Collections / custom shelves
+- [ ] [Calibre](https://calibre-ebook.com) sync (wireless device protocol)
+- [ ] Offline dictionary and highlights
+- [ ] Dedicated app icon
 
-Hai un'idea? Apri una [issue](https://github.com/HokutoNoCode/FireReader/issues/new/choose).
+Got an idea? Open an [issue](https://github.com/HokutoNoCode/FireReader/issues/new/choose).
 
-## Contribuire
+## Contributing
 
-Ogni aiuto è benvenuto: codice, test su altri dispositivi, correzioni alla guida, traduzioni.
-Leggi **[CONTRIBUTING.md](CONTRIBUTING.md)**: spiega come compilare, provare sul tablet e proporre modifiche.
+All help is welcome: code, testing on other devices, guide fixes, translations.
+Read **[CONTRIBUTING.md](CONTRIBUTING.md)**: it covers building, testing on a tablet and submitting changes.
 
-## Avvertenze
+## Warnings
 
 > [!WARNING]
-> - Lo sblocco vale **solo** per il **Fire HD 8 di 7ª generazione (2017), "douglas", KFDOWI**.
-> - Sbloccare **cancella tutti i dati** del tablet e invalida la garanzia. Procedi **a tuo rischio**.
-> - I file di sblocco (preloader, TrustZone, LK, immagini brick, TWRP) e le ROM **non sono inclusi**:
->   appartengono ai rispettivi autori e ad Amazon. Scaricali dalle fonti originali indicate nella guida.
+> - The unlock is **only** for the **7th-generation Fire HD 8 (2017), "douglas", KFDOWI**.
+> - Unlocking **wipes all data** on the tablet and voids the warranty. Proceed **at your own risk**.
+> - The unlock files (preloader, TrustZone, LK, brick images, TWRP) and the ROMs are **not included**:
+>   they belong to their authors and to Amazon. Download them from the original sources linked in the guide.
 
 > [!IMPORTANT]
-> Il driver fastboot installa un **certificato autofirmato** tra quelli attendibili di Windows.
-> A lavoro finito rimuovilo con `windows/driver/uninstall-driver.ps1`.
-> `windows/adb-bridge.bat` esegue tutto ciò che viene scritto nel suo file di comandi: avvialo solo quando serve.
+> The fastboot driver installs a **self-signed certificate** into Windows' trusted stores.
+> Remove it when you're done with `windows/driver/uninstall-driver.ps1`.
+> `windows/adb-bridge.bat` runs whatever is written into its command file: start it only when you need it.
 
-## Crediti
+## Credits
 
-FireReader è il pezzo finale: il lavoro difficile l'hanno fatto altri.
+FireReader is the last piece of the puzzle. The hard work was done by others:
 
-- **k4y0z**: *[UNLOCK][ROOT][TWRP][UNBRICK] Fire HD 8 2017 (douglas)* su XDA (amonet-douglas, brick-douglas, TWRP)
-- **xyz\`**: exploit originale *amonet* per i bootrom MediaTek
+- **k4y0z**: *[UNLOCK][ROOT][TWRP][UNBRICK] Fire HD 8 2017 (douglas)* on XDA (amonet-douglas, brick-douglas, TWRP)
+- **xyz\`**: the original *amonet* exploit for MediaTek bootroms
 - **diplomatic**: *mtk-su*
-- **Rortiz2**: LineageOS 12.1 / 14.1 / 15.1 per douglas
-- **ryanfortner**: [riepilogo della procedura](https://github.com/ryanfortner/FireHD8-2017)
-- **ReadEra**: lettore usato per EPUB e altri formati
+- **Rortiz2**: LineageOS 12.1 / 14.1 / 15.1 for douglas
+- **ryanfortner**: [procedure summary](https://github.com/ryanfortner/FireHD8-2017)
+- **ReadEra**: the reader used for EPUB and other formats
 
-Amazon, Fire, Kindle, Kobo, LineageOS e ReadEra sono marchi dei rispettivi proprietari.
-FireReader non è affiliato a nessuno di loro.
+Amazon, Fire, Kindle, Kobo, LineageOS and ReadEra are trademarks of their respective owners.
+FireReader is not affiliated with any of them.
 
-## Licenza
+## License
 
-Il codice di questo repository è rilasciato sotto licenza **[MIT](LICENSE)**.
-Gli strumenti di terze parti citati mantengono le loro licenze.
-
----
-
-<a name="english"></a>
-## 🇬🇧 English
-
-**FireReader turns an old Amazon Fire HD 8 (2017, "douglas") into a dedicated e-reader, starting from a Windows PC.**
-
-- **The app** (`app/`, ~40 KB, plain Java, Android 5.0+): cover-based library with search and sorting,
-  *continue reading* with real page progress, a **built-in PDF reader that auto-crops print margins**
-  (odd and even pages separately) so text fills the screen width, page turns with taps or volume keys,
-  warm light, grayscale, brightness, and **Wi-Fi book upload** (`http://<tablet-ip>:8080`).
-- **The unlock, from Windows** ([`docs/GUIDA.md`](docs/GUIDA.md), in Italian): three Windows-specific fixes:
-  1. a locally signed **WinUSB fastboot driver** for `VID_1949&PID_0260` ([`windows/driver`](windows/driver));
-  2. `fastboot -S 512M flash brick brick-9820.img`, otherwise modern fastboot resparses the exploit image;
-  3. a headless **Ubuntu VirtualBox VM** with USB filters (0E8D/1949) for the amonet bootrom step, which fails on Windows with `read fail` ([`vm`](vm)).
-- **Code walkthrough**: [`docs/ARCHITETTURA.md`](docs/ARCHITETTURA.md). **Contributing**: [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-Third-party unlock files and ROMs are **not** included; get them from k4y0z's and Rortiz2's XDA threads.
-Unlocking wipes the device and is done at your own risk. MIT licensed.
+The code in this repository is released under the **[MIT](LICENSE)** license.
+The third-party tools mentioned keep their own licenses.

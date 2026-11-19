@@ -1,5 +1,7 @@
 # Guida completa: da Fire HD 8 (2017) a FireReader, partendo da Windows
 
+<sub>🇬🇧 [English version](GUIDE.md)</sub>
+
 **Indice:** [0. Cosa serve](#0-cosa-serve) · [1. Driver fastboot](#1-driver-fastboot-per-windows) ·
 [2. Brick intenzionale](#2-brick-intenzionale-del-preloader-da-windows) · [3. Bootrom nella VM](#3-passaggio-bootrom-nella-vm-linux) ·
 [4. TWRP](#4-twrp) · [5. LineageOS](#5-lineageos-151-android-81) · [6. FireReader](#6-firereader) ·
@@ -132,7 +134,7 @@ Il primo avvio richiede qualche minuto. Completa la configurazione iniziale e ri
 ## 6. FireReader
 
 ```bash
-cd app && ./build.sh            # oppure scarica l'APK dalle Release
+cd app && ./build.sh            # oppure scarica l'APK da release/
 adb install build/FireReader.apk
 adb shell pm grant it.firereader.home android.permission.READ_EXTERNAL_STORAGE
 adb shell pm grant it.firereader.home android.permission.WRITE_EXTERNAL_STORAGE

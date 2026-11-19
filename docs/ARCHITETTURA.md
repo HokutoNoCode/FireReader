@@ -1,5 +1,7 @@
 # Come funziona FireReader: ogni file spiegato
 
+<sub>🇬🇧 [English version](ARCHITECTURE.md)</sub>
+
 Questa pagina è per chi vuole **capire, modificare o migliorare** il progetto. Per sbloccare il tablet passo
 passo vedi invece la [guida](GUIDA.md).
 

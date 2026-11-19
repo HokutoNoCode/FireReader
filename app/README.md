@@ -1,17 +1,17 @@
 # FireReader (app)
 
-Home screen e lettore PDF per tablet Android usati come e-reader. Java puro, senza AndroidX né Gradle.
-Come funziona ogni file: [docs/ARCHITETTURA.md](../docs/ARCHITETTURA.md).
+Home screen and PDF reader for Android tablets used as e-readers. Plain Java, no AndroidX, no Gradle.
+How every file works: [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
 ```bash
-./build.sh                 # scarica build-tools/platform da dl.google.com e crea build/FireReader.apk
-KEYSTORE=~/mia.keystore KEYSTORE_PASS=... ./build.sh   # per firmare con la tua chiave
+./build.sh                 # downloads build-tools/platform from dl.google.com and creates build/FireReader.apk
+KEYSTORE=~/my.keystore KEYSTORE_PASS=... ./build.sh   # sign with your own key
 ```
 
-Al primo build viene creata una chiave di firma locale (`firereader.keystore`, ignorata da git):
-tienila, ti serve per aggiornare l'app senza disinstallarla.
+The first build creates a local signing key (`firereader.keystore`, ignored by git):
+keep it, you need it to update the app without uninstalling.
 
-**Nota per JDK 21+**: niente classi anonime che catturano variabili locali. javac genera attributi
-`MethodParameters` senza nome che mandano in crash `d8`. Usa lambda o classi `static`.
+**Note for JDK 21+**: no anonymous classes that capture local variables. javac emits unnamed
+`MethodParameters` attributes that crash `d8`. Use lambdas or `static` classes.
 
-Permessi da concedere via adb dopo l'installazione: vedi [docs/GUIDA.md](../docs/GUIDA.md#6-firereader).
+Permissions to grant via adb after installing: see [docs/GUIDE.md](../docs/GUIDE.md#6-firereader).

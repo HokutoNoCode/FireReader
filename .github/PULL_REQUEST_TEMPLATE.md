@@ -1,19 +1,19 @@
-## Cosa cambia
+## What changes
 
-<!-- Descrivi la modifica in poche righe -->
+<!-- Describe the change in a few lines -->
 
-## Perché
+## Why
 
-<!-- Quale problema risolve? Collega la issue: "Chiude #12" -->
+<!-- What problem does it solve? Link the issue: "Closes #12" -->
 
-## Come l'ho provata
+## How I tested it
 
-- [ ] `./build.sh` termina con `OK`
-- [ ] Provata su un dispositivo vero (modello e Android: …)
-- [ ] Aggiornati README / GUIDA / ARCHITETTURA se cambia un comportamento visibile
-- [ ] Aggiunta una riga in `CHANGELOG.md`
-- [ ] Nessun file personale, libro, chiave di firma o APK nel commit
+- [ ] `./build.sh` ends with `OK`
+- [ ] Tested on a real device (model and Android version: …)
+- [ ] Updated README / GUIDE / ARCHITECTURE if visible behavior changes
+- [ ] Added a line to `CHANGELOG.md`
+- [ ] No personal files, books, signing keys or APKs in the commit
 
-## Screenshot
+## Screenshots
 
-<!-- Se tocca l'interfaccia, prima e dopo -->
+<!-- If it touches the UI, before and after -->
