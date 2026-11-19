@@ -18,7 +18,7 @@ and get a home screen built for one thing only: reading.
 
 [**Step-by-step guide**](docs/GUIDE.md) ·
 [**How the code works**](docs/ARCHITECTURE.md) ·
-[**Download the APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.1.0.apk) ·
+[**Download the APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.2.0.apk) ·
 [**Contributing**](CONTRIBUTING.md) ·
 [🇮🇹 Italiano](README.it.md)
 
@@ -56,6 +56,7 @@ something that feels like a Kobo or a Kindle, except it's yours and it's open.
 | | |
 |---|---|
 | 📚 **Cover library** | Real covers extracted from PDF, EPUB and CBZ. Search by title or author, sort by recent, title or author |
+| ✏️ **Manage books** | Long-press a book to rename it (title and author) or delete it, with confirmation |
 | 📖 **Continue reading** | Your current book up front, with **real page and percentage**, plus a *recently read* row |
 | ✂️ **Margin-free PDFs** | Built-in PDF reader that **automatically crops print margins** (odd and even pages handled separately) so text fills the full screen width. Your file is never modified |
 | 🔊 **Page turns** | Tap left or right, swipe, or use the **volume keys** |
@@ -106,8 +107,8 @@ Every step, with the exact commands and what you should see on the screen, is in
 > Starting from Fire OS? Follow the **[step-by-step guide](docs/GUIDE.md)** first.
 
 ```bash
-# 1. download release/FireReader-3.1.0.apk (or build it: cd app && ./build.sh)
-adb install FireReader-3.1.0.apk
+# 1. download release/FireReader-3.2.0.apk (or build it: cd app && ./build.sh)
+adb install FireReader-3.2.0.apk
 
 # 2. grant permissions (brightness, warm light, grayscale, books)
 adb shell pm grant it.firereader.home android.permission.READ_EXTERNAL_STORAGE

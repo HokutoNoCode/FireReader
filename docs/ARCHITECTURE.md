@@ -77,7 +77,8 @@ A single `Activity` that redraws everything with `build()` whenever you switch t
 | Covers | `coverView()`, `loadCover()`, `placeholder()` | PDF: first page rendered with `PdfRenderer`. EPUB and CBZ: the image named *cover*, otherwise the first one. Covers are generated on a background thread and cached as PNG (`getCacheDir()`). Until one is ready, a typographic cover with the title is shown |
 | Title and author | `titleAuthor()` | Parsed from the file name: `Author - Title.pdf`. Without a dash, the whole name becomes the title |
 | Scanning | `scan()`, `walk()` | Looks for books in `Books` and `Download` (up to 4 levels of subfolders). Formats: pdf, epub, cbr, cbz, mobi, azw3, fb2, djvu, txt, doc, docx, rtf |
-| Opening | `open()` | **PDFs** go to the built-in `Reader`. Other formats open in **ReadEra** if installed, otherwise in any compatible app. Long-pressing a PDF also offers "Open with ReadEra" |
+| Opening | `open()` | **PDFs** go to the built-in `Reader`. Other formats open in **ReadEra** if installed, otherwise in any compatible app. Long-pressing a book opens `details()`: read, open with ReadEra (PDF), mark as unread, rename, delete |
+| Rename and delete | `rename()`, `moveData()`, `confirmDelete()` | Rename builds `Author - Title.ext` from two fields (forbidden characters stripped), renames the file and moves every saved key (`t:`, `page:`, `pages:`, `crop:`, `box:`) and the cached cover to the new path. Delete asks for confirmation, deletes the file for good and clears its keys and cover |
 | Comfort | `buildComfort()`, `toggleRow()`, `SB` | Brightness (`Settings.System`), warm light (starts or stops `Warm`), grayscale (`accessibility_display_daltonizer`), screen timeout |
 | Books over Wi-Fi | `wifiReceive()`, `startServer()`, `handle()`, `PAGE` | See below |
 

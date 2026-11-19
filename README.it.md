@@ -16,7 +16,7 @@ Sblocco interamente da **Windows**, LineageOS al posto di Fire OS e una home pen
 
 [**Guida completa**](docs/GUIDA.md) ·
 [**Come funziona il codice**](docs/ARCHITETTURA.md) ·
-[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.1.0.apk) ·
+[**Scarica l'APK**](https://github.com/HokutoNoCode/FireReader/raw/main/release/FireReader-3.2.0.apk) ·
 [**Contribuire**](CONTRIBUTING.md) ·
 [🇬🇧 English](README.md)
 
@@ -54,6 +54,7 @@ tablet in qualcosa che somiglia a un Kobo o a un Kindle, ma è tuo e aperto.
 | | |
 |---|---|
 | 📚 **Libreria a copertine** | Copertine vere estratte da PDF, EPUB e CBZ. Ricerca per titolo o autore, ordinamento per recenti, titolo o autore |
+| ✏️ **Gestione libri** | Tieni premuto un libro per rinominarlo (titolo e autore) o eliminarlo, con conferma |
 | 📖 **Continua a leggere** | Il libro in corso in primo piano, con **pagina e percentuale reali**, più la riga dei letti di recente |
 | ✂️ **PDF senza margini** | Lettore PDF integrato che **ritaglia da solo i margini di stampa** (pagine pari e dispari separate) e porta il testo a tutta larghezza. Il file non viene mai modificato |
 | 🔊 **Girare pagina** | Tocco a destra o a sinistra, scorrimento, oppure **tasti del volume** |
@@ -100,7 +101,7 @@ Ogni passaggio, con i comandi esatti e cosa deve comparire sullo schermo, è nel
 > Se parti da Fire OS, segui prima la **[guida completa](docs/GUIDA.md)**.
 
 ```bash
-# 1. scarica release/FireReader-3.1.0.apk (oppure compila: cd app && ./build.sh)
+# 1. scarica release/FireReader-3.2.0.apk (oppure compila: cd app && ./build.sh)
 adb install FireReader.apk
 
 # 2. concedi i permessi (luminosità, luce calda, bianco e nero, libri)

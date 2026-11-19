@@ -77,7 +77,8 @@ una volta via adb (`pm grant` e `appops set`), come indicato nel README.
 | Copertine | `coverView()`, `loadCover()`, `placeholder()` | PDF: prima pagina disegnata con `PdfRenderer`. EPUB e CBZ: l'immagine che si chiama *cover*, altrimenti la prima. Le copertine vengono generate in un thread separato e salvate in cache come PNG (`getCacheDir()`). Finché non è pronta, si vede una copertina tipografica col titolo |
 | Titolo e autore | `titleAuthor()` | Ricavati dal nome del file: `Autore - Titolo.pdf`. Senza trattino, tutto il nome diventa il titolo |
 | Scansione | `scan()`, `walk()` | Cerca i libri in `Books` e `Download` (fino a 4 livelli di sottocartelle). Formati: pdf, epub, cbr, cbz, mobi, azw3, fb2, djvu, txt, doc, docx, rtf |
-| Apertura | `open()` | I **PDF** vanno al lettore integrato `Reader`. Gli altri formati si aprono con **ReadEra** se c'è, altrimenti con qualunque app compatibile. Tenendo premuto su un PDF c'è anche "Apri con ReadEra" |
+| Apertura | `open()` | I **PDF** vanno al lettore integrato `Reader`. Gli altri formati si aprono con **ReadEra** se c'è, altrimenti con qualunque app compatibile. Tenendo premuto un libro si apre `details()`: leggi, apri con ReadEra (PDF), segna come non letto, rinomina, elimina |
+| Rinomina ed elimina | `rename()`, `moveData()`, `confirmDelete()` | Rinomina compone `Autore - Titolo.ext` da due campi (togliendo i caratteri vietati), rinomina il file e sposta sul nuovo percorso tutte le chiavi salvate (`t:`, `page:`, `pages:`, `crop:`, `box:`) e la copertina in cache. Elimina chiede conferma, cancella il file in modo definitivo e ne pulisce chiavi e copertina |
 | Comfort | `buildComfort()`, `toggleRow()`, `SB` | Luminosità (`Settings.System`), luce calda (avvia o ferma `Warm`), bianco e nero (`accessibility_display_daltonizer`), timeout dello schermo |
 | Libri via Wi-Fi | `wifiReceive()`, `startServer()`, `handle()`, `PAGE` | Vedi sotto |
 

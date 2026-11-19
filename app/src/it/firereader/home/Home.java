@@ -446,14 +446,114 @@ public class Home extends Activity {
 
     void details(final File f) {
         String[] ta = titleAuthor(f);
-        new AlertDialog.Builder(this).setTitle(ta[0])
-            .setMessage((ta[1].isEmpty() ? "" : ta[1] + "\n") + kind(f) + "\n" + f.getParent())
-            .setPositiveButton("Leggi", (d, w) -> open(f))
-            .setNeutralButton(ext(f).equals(".pdf") ? "Apri con ReadEra" : "Segna come non letto", (d, w) -> {
-                if (ext(f).equals(".pdf")) open(f, true);
-                else { prefs.edit().remove("t:" + f.getPath()).apply(); build(); } })
-            .setNegativeButton("Chiudi", null).show();
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(24), dp(20), dp(24), dp(8));
+        TextView t = text(ta[0], 20, INK, true, true); box.addView(t);
+        TextView info = text((ta[1].isEmpty() ? "" : ta[1] + "\n") + kind(f), 14, GREY, false, false);
+        info.setPadding(0, dp(4), 0, dp(12)); box.addView(info);
+        final AlertDialog dlg = new AlertDialog.Builder(this).setView(box).setNegativeButton("Chiudi", null).create();
+        box.addView(menuRow("Leggi", INK, v -> { dlg.dismiss(); open(f); }));
+        if (ext(f).equals(".pdf")) box.addView(menuRow("Apri con ReadEra", INK, v -> { dlg.dismiss(); open(f, true); }));
+        if (prefs.getLong("t:" + f.getPath(), 0) > 0)
+            box.addView(menuRow("Segna come non letto", INK, v -> { dlg.dismiss(); prefs.edit().remove("t:" + f.getPath()).remove("page:" + f.getPath()).apply(); build(); }));
+        box.addView(menuRow("Rinomina", INK, v -> { dlg.dismiss(); rename(f); }));
+        box.addView(menuRow("Elimina", 0xFFB3261E, v -> { dlg.dismiss(); confirmDelete(f); }));
+        dlg.show();
     }
+
+    View menuRow(String label, int color, View.OnClickListener l) {
+        LinearLayout w = new LinearLayout(this); w.setOrientation(LinearLayout.VERTICAL);
+        w.addView(rule());
+        TextView t = text(label, 17, color, false, false);
+        t.setPadding(0, dp(14), 0, dp(14));
+        w.addView(t);
+        w.setOnClickListener(l);
+        return w;
+    }
+
+    EditText field(String hint, String value) {
+        EditText e = new EditText(this);
+        e.setHint(hint); e.setText(value); e.setSingleLine(true); e.setTextSize(17);
+        e.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        return e;
+    }
+
+    void rename(final File f) {
+        String[] ta = titleAuthor(f);
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(24), dp(8), dp(24), 0);
+        box.addView(text("Titolo", 13, GREY, false, true));
+        final EditText title = field("Titolo", ta[0]); box.addView(title);
+        TextView al = text("Autore", 13, GREY, false, true); al.setPadding(0, dp(12), 0, 0); box.addView(al);
+        final EditText author = field("Autore (facoltativo)", ta[1]); box.addView(author);
+        title.setSelectAllOnFocus(true);
+        final AlertDialog dlg = new AlertDialog.Builder(this).setTitle("Rinomina libro").setView(box)
+            .setNegativeButton("Annulla", null).setPositiveButton("Salva", null).create();
+        dlg.setOnShowListener(x -> {
+            dlg.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+                String nt = clean(title.getText().toString()), na = clean(author.getText().toString());
+                if (nt.isEmpty()) { title.setError("Scrivi un titolo"); return; }
+                File to = new File(f.getParentFile(), (na.isEmpty() ? nt : na + " - " + nt) + ext(f));
+                if (to.getName().equals(f.getName())) { dlg.dismiss(); return; }
+                if (to.exists() && !to.getName().equalsIgnoreCase(f.getName())) { title.setError("Esiste già un libro con questo nome"); return; }
+                if (!f.renameTo(to)) { toast("Impossibile rinominare il file"); return; }
+                moveData(f, to);
+                dlg.dismiss(); toast("Rinominato"); build();
+            });
+            title.requestFocus();
+            dlg.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        });
+        dlg.show();
+    }
+
+    String clean(String s) { return s.replaceAll("[\\\\/:*?\"<>|\\n\\r\\t]", " ").replaceAll("\\s+", " ").replace(" - ", " – ").trim(); }
+
+    void moveData(File from, File to) {
+        String a = from.getPath(), b = to.getPath();
+        SharedPreferences.Editor ed = prefs.edit();
+        for (Map.Entry<String, ?> e : new HashMap<>(prefs.getAll()).entrySet()) {
+            String k = e.getKey(); int c = k.indexOf(':');
+            if (c < 0) continue;
+            String rest = k.substring(c + 1);
+            if (!rest.equals(a) && !rest.startsWith(a + ":")) continue;
+            String nk = k.substring(0, c + 1) + b + rest.substring(a.length());
+            Object v = e.getValue();
+            if (v instanceof Long) ed.putLong(nk, (Long) v);
+            else if (v instanceof Integer) ed.putInt(nk, (Integer) v);
+            else if (v instanceof Boolean) ed.putBoolean(nk, (Boolean) v);
+            else if (v instanceof String) ed.putString(nk, (String) v);
+            ed.remove(k);
+        }
+        ed.apply();
+        Bitmap cv = covers.remove(a); if (cv != null) covers.put(b, cv);
+        File oc = coverCache(from, from.length()); File nc = coverCache(to, to.length());
+        if (oc.exists()) oc.renameTo(nc);
+    }
+
+    void confirmDelete(final File f) {
+        String t = titleAuthor(f)[0];
+        new AlertDialog.Builder(this).setTitle("Eliminare questo libro?")
+            .setMessage("«" + t + "» verrà cancellato dal tablet in modo definitivo. Non potrai recuperarlo.")
+            .setNegativeButton("Annulla", null)
+            .setPositiveButton("Elimina", (d, w) -> {
+                long len = f.length();
+                if (!f.delete()) { toast("Impossibile eliminare il file"); return; }
+                String a = f.getPath();
+                SharedPreferences.Editor ed = prefs.edit();
+                for (String k : new HashSet<>(prefs.getAll().keySet())) {
+                    int c = k.indexOf(':'); if (c < 0) continue;
+                    String rest = k.substring(c + 1);
+                    if (rest.equals(a) || rest.startsWith(a + ":")) ed.remove(k);
+                }
+                ed.apply();
+                covers.remove(a); coverCache(f, len).delete();
+                toast("Libro eliminato"); build();
+            }).show();
+    }
+
+    File coverCache(File f, long len) { return new File(getCacheDir(), Integer.toHexString(f.getPath().hashCode()) + "_" + len + ".png"); }
 
     ImageView coverView(final File f, int w, int h) {
         final ImageView iv = new ImageView(this);
@@ -490,7 +590,7 @@ public class Home extends Activity {
     }
 
     synchronized Bitmap loadCover(File f, int w, int h) {
-        File cache = new File(getCacheDir(), Integer.toHexString(f.getPath().hashCode()) + "_" + f.length() + ".png");
+        File cache = coverCache(f, f.length());
         try {
             if (cache.exists()) return BitmapFactory.decodeFile(cache.getPath());
             Bitmap out = null;

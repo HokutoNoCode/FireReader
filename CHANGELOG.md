@@ -2,7 +2,11 @@
 
 All notable changes to FireReader. Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [3.2.0] - 2026-11-19
+### Added
+- Long-press a book for a new menu: **Read**, **Open with ReadEra** (PDF), **Mark as unread**, **Rename** and **Delete**.
+- **Rename**: edit title and author; the file is renamed to `Author - Title` and reading progress, margins and cover are kept.
+- **Delete**: asks for confirmation, then removes the file from the tablet permanently, along with its saved data.
 ### Documentation
 - English is now the main language of the repository (README, guide, architecture, contributing).
   Italian versions remain available: `README.it.md`, `docs/GUIDA.md`, `docs/ARCHITETTURA.md`.
